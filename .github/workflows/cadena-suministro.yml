@@ -67,7 +67,7 @@ jobs:
       # conflicto de versiones lo ponía en rojo sin llegar a auditar nada.
       # Se ejecuta pip-audit directamente, con versión fijada.
       - name: Instalar pip-audit
-        run: python -m pip install --no-cache-dir "pip-audit==2.10.1"
+        run: python -m pip install --no-cache-dir --only-binary :all: "pip-audit==2.10.1"
 
       - name: Auditar las dependencias con pip-audit
         run: >-
