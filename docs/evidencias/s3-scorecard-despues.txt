@@ -1,0 +1,25 @@
+# Paso S.3 - OpenSSF Scorecard después de fijar las acciones por SHA (PR #33)
+# fecha 2026-11-26T21:08:54Z | commit 8bd3a16 | scorecard v5.5.0
+Puntuación global: 7.6
+ -1 Packaging: packaging workflow not detected
+ -1 Branch-Protection: internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md
+  0 Maintained: project was created within the last 90 days. Please review its contents carefully
+  0 CII-Best-Practices: no effort to earn an OpenSSF best practices badge detected
+  0 License: license file not detected
+  0 Fuzzing: project is not fuzzed
+  0 Contributors: project has 0 contributing companies or organizations -- score normalized to 0
+  8 Pinned-Dependencies: dependency not pinned by hash detected -- score normalized to 8
+       Warn: pipCommand not pinned by hash: .github/workflows/cadena-suministro.yml:71
+       Info:  12 out of  12 GitHub-owned GitHubAction dependencies pinned
+       Info:   4 out of   4 third-party GitHubAction dependencies pinned
+       Info:   0 out of   1 pipCommand dependencies pinned
+  8 Signed-Releases: 1 out of the last 1 releases have a total of 1 signed artifacts.
+ 10 Security-Policy: security policy file detected
+ 10 Code-Review: all changesets reviewed
+ 10 Token-Permissions: GitHub workflow tokens follow principle of least privilege
+ 10 Binary-Artifacts: no binaries found in the repo
+ 10 Dangerous-Workflow: no dangerous workflow patterns detected
+ 10 Dependency-Update-Tool: update tool detected
+ 10 SAST: SAST tool is run on all commits
+ 10 Vulnerabilities: 0 existing vulnerabilities detected
+ 10 CI-Tests: 14 out of 14 merged PRs checked by a CI test -- score normalized to 10

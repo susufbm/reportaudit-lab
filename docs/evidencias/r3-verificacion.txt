@@ -1,0 +1,84 @@
+# Paso R.3 - Verificación de ReportAudit v1.0.0 como cliente (2026-11-26T20:42:32Z)
+# Release: https://github.com/susufbm/reportaudit-lab/releases/tag/v1.0.0
+
+$ gh release download v1.0.0 --repo susufbm/reportaudit-lab
+[exit code: 0]
+
+$ ls -1
+SHA256SUMS
+reportaudit-1.0.0.tar.gz
+reportaudit-provenance.sigstore.json
+reportaudit-sbom.cdx.json
+reportaudit-sbom.sigstore.json
+[exit code: 0]
+
+## 1) Huellas SHA-256
+
+$ sha256sum -c SHA256SUMS
+reportaudit-1.0.0.tar.gz: OK
+reportaudit-sbom.cdx.json: OK
+[exit code: 0]
+
+## 2) Procedencia (SLSA)
+
+$ /home/susu/reportaudit-lab/tools/gh attestation verify reportaudit-1.0.0.tar.gz --repo susufbm/reportaudit-lab
+Loaded digest sha256:643dfc4c455ea2c0d987e5ec8428d909380420d7e082777dfb3ce9c469f261b0 for file://reportaudit-1.0.0.tar.gz
+Loaded 1 attestation from GitHub API
+
+The following policy criteria will be enforced:
+- Predicate type must match:................ https://slsa.dev/provenance/v1
+- Source Repository Owner URI must match:... https://github.com/susufbm
+- Source Repository URI must match:......... https://github.com/susufbm/reportaudit-lab
+- Subject Alternative Name must match regex: (?i)^https://github\.com/susufbm/reportaudit-lab/
+- OIDC Issuer must match:................... https://token.actions.githubusercontent.com
+
+✓ Verification succeeded!
+
+The following 1 attestation matched the policy criteria
+
+- Attestation #1
+  - Build repo:..... susufbm/reportaudit-lab
+  - Build workflow:. .github/workflows/publicar-version.yml@refs/tags/v1.0.0
+  - Signer repo:.... susufbm/reportaudit-lab
+  - Signer workflow: .github/workflows/publicar-version.yml@refs/tags/v1.0.0
+
+[exit code: 0]
+
+## 3) SBOM atestado
+
+$ /home/susu/reportaudit-lab/tools/gh attestation verify reportaudit-1.0.0.tar.gz --repo susufbm/reportaudit-lab --predicate-type https://cyclonedx.org/bom
+Loaded digest sha256:643dfc4c455ea2c0d987e5ec8428d909380420d7e082777dfb3ce9c469f261b0 for file://reportaudit-1.0.0.tar.gz
+Loaded 1 attestation from GitHub API
+
+The following policy criteria will be enforced:
+- Predicate type must match:................ https://cyclonedx.org/bom
+- Source Repository Owner URI must match:... https://github.com/susufbm
+- Source Repository URI must match:......... https://github.com/susufbm/reportaudit-lab
+- Subject Alternative Name must match regex: (?i)^https://github\.com/susufbm/reportaudit-lab/
+- OIDC Issuer must match:................... https://token.actions.githubusercontent.com
+
+✓ Verification succeeded!
+
+The following 1 attestation matched the policy criteria
+
+- Attestation #1
+  - Build repo:..... susufbm/reportaudit-lab
+  - Build workflow:. .github/workflows/publicar-version.yml@refs/tags/v1.0.0
+  - Signer repo:.... susufbm/reportaudit-lab
+  - Signer workflow: .github/workflows/publicar-version.yml@refs/tags/v1.0.0
+
+[exit code: 0]
+
+## 4) Archivo alterado
+
+$ sha256sum reportaudit-1.0.0.tar.gz alterado.tar.gz
+643dfc4c455ea2c0d987e5ec8428d909380420d7e082777dfb3ce9c469f261b0  reportaudit-1.0.0.tar.gz
+4390a1e52606275b2957117d6e8868929cd5401419f69943486e3f86388dafaa  alterado.tar.gz
+[exit code: 0]
+
+$ /home/susu/reportaudit-lab/tools/gh attestation verify alterado.tar.gz --repo susufbm/reportaudit-lab
+Loaded digest sha256:4390a1e52606275b2957117d6e8868929cd5401419f69943486e3f86388dafaa for file://alterado.tar.gz
+✗ Loading attestations from GitHub API failed
+
+Error: HTTP 404: Not Found (https://api.github.com/repos/susufbm/reportaudit-lab/attestations/sha256:4390a1e52606275b2957117d6e8868929cd5401419f69943486e3f86388dafaa?per_page=30&predicate_type=https%3A%2F%2Fslsa.dev%2Fprovenance%2Fv1)
+[exit code: 1]
