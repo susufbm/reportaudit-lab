@@ -15,7 +15,6 @@ import os
 import re
 import sqlite3
 import subprocess
-from pathlib import Path
 
 import yaml
 
@@ -60,7 +59,10 @@ def buscar_reportes_cliente(nombre_cliente, ruta_db=RUTA_DB):
 
 def convertir_a_pdf(nombre_archivo):
     """Convierte un reporte HTML a PDF usando la utilidad del sistema."""
-    if not NOMBRE_HTML_VALIDO.match(Path(nombre_archivo).name):
+    # Se valida el argumento COMPLETO, no solo Path(...).name: si no,
+    # "-x/informe.html" o "../informe.html" pasarían la lista blanca y
+    # llegarían a wkhtmltopdf como opción o como ruta fuera del directorio.
+    if not NOMBRE_HTML_VALIDO.fullmatch(nombre_archivo):
         raise ValueError("Nombre de archivo no válido")
     salida = nombre_archivo + ".pdf"
     try:
