@@ -1,0 +1,23 @@
+# Parte J — Instalación verificada de Syft, Grype y Trivy (2026-11-26)
+
+## SHA-256 publicado = SHA-256 calculado (scripts/instalar_herramientas.py)
+syft  1.52.0  linux/amd64  caeedb81fb0491615f1ebd1761e4145d41ee86dd2cc7bf80669f9f5ad9d6133d  OK
+grype 0.119.0 linux/amd64  3fa2dc4b924621ab65404cf08d0b8438d896d80ab949c9d5a4ca283c36004c9b  OK
+trivy 0.74.0  linux/amd64  2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a  OK
+
+## SHA-256 de los ejecutables ya extraídos (referencia local; distinta de la del .tar.gz, que es lo que se verificó arriba)
+15a52d0122953081d16e6695f48055216a4de293bb005948663bb739a63880f9  tools/syft
+e02ba25615668c6bae03473e3c6493b6dfffc2e4e419f65f9bd62555ac10cd0e  tools/grype
+d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791  tools/trivy
+
+## --version
+syft 1.52.0
+grype 0.119.0
+Version: 0.74.0
+
+## git status (tools/ no debe aparecer: está en .gitignore)
+ M app/config.yaml
+ M docs/lab1-bitacora.md
+?? docs/evidencias/h3-commit-bloqueado.txt
+?? docs/evidencias/j-instalacion-herramientas.txt
+.gitignore:11:tools/	tools/syft

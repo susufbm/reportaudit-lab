@@ -1,0 +1,25 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://github.com/susufbm/reportaudit-lab/vex/2026-001",
+  "author": "Jesus Fernandez (GitHub: @susufbm)",
+  "timestamp": "2026-11-26T10:57:00Z",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "CVE-2024-34069",
+        "aliases": [
+          "GHSA-2g68-c3qc-8985"
+        ]
+      },
+      "products": [
+        {
+          "@id": "pkg:pypi/werkzeug@3.0.1"
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "CVE-2024-34069 affects the Werkzeug interactive debugger, which can execute code if a developer interacts with an attacker-controlled domain while the debugger is active. ReportAudit never enables the debugger: app/servicio.py, line 64, starts the service with app.run(host=\"127.0.0.1\", ..., debug=False), and there is no other call to app.run, no use of werkzeug.debug.DebuggedApplication and no FLASK_DEBUG setting in the repository. The vulnerable code is therefore not in the execute path. werkzeug is a transitive dependency (via flask) and will still be upgraded to 3.1.9 with the Dependabot security update in part M.5."
+    }
+  ]
+}
