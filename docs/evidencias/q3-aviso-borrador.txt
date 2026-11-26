@@ -1,0 +1,12 @@
+# Paso Q.3 - Simulacro de divulgación coordinada (borrador, NO publicado)
+Aviso:            GHSA-qr5f-pmmw-w92g (https://github.com/susufbm/reportaudit-lab/security/advisories/GHSA-qr5f-pmmw-w92g, privado)
+Título:           SQL injection in /reportes (cliente parameter) in versions before 1.0.0
+Recibido de:      @JesusFB4 (informe privado por "Report a vulnerability"), crédito: reporter (accepted)
+Estado:           triage -> draft (Accept and open as draft). Sin CVE solicitado y sin publicar.
+Producto:         pip / reportaudit
+Afectadas:        < 1.0.0
+Corregida:        1.0.0 (la corrección es la consulta parametrizada del PR #22; la versión 1.0.0 se publica en la Parte R)
+Función:          buscar_reportes_cliente (app/reporte_auditoria.py)
+Severidad:        High, CVSS 3.1 = 8.2
+Vector:           CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N
+CWE:              CWE-89 (SQL Injection)
